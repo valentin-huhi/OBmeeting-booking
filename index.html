@@ -66,10 +66,11 @@
         }
 
         .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             margin-top: 40px;
+            justify-content: center;
         }
 
         .card {
@@ -82,6 +83,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            width: calc(50% - 15px);
+            max-width: 400px;
         }
 
         .card:hover {
@@ -275,11 +278,13 @@
             }
 
             .cards-container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 gap: 20px;
             }
 
             .card {
+                width: 100%;
+                max-width: 100%;
                 padding: 30px 20px;
             }
 
@@ -329,10 +334,10 @@
     </header>
 
     <div class="container">
-        <h1>Welcome to our OTWorld 2026 booking-page for agency meetings.</h1>
+        <h1>Welcome to our OTWorld 2026 booking-page for agency and CX meetings.</h1>
         
         <p class="description">
-            Our Ottobock agency partners are happy to meet you in person at OTWorld in Leipzig, discuss projects or just have a coffee with you. Please book a meeting at no cost for you with them.
+            Our Ottobock agency partners and CX team are happy to meet you in person at OTWorld in Leipzig, discuss projects or just have a coffee with you. Please book a meeting at no cost for you!
         </p>
 
         <div class="cards-container">
@@ -367,7 +372,7 @@
             <div class="card">
                 <img src="ottobock_logo_1024x281.png" alt="Ottobock" class="card-logo">
                 <p class="card-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.
+                    Grab a coffee with HQ CX for personal 1:1 meetings on any topic you would like to discuss across brand, product comms, service or social media.
                 </p>
                 <a href="#" class="cta-button" id="openFormBtn">Get in touch</a>
             </div>
@@ -385,7 +390,7 @@
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
-            <h2>Get in touch</h2>
+            <h2>Let's meet</h2>
             <div id="successMessage" class="success-message">
                 Thank you! Your message has been sent successfully.
             </div>
@@ -405,6 +410,10 @@
                 <div class="form-group">
                     <label for="oba">OBA</label>
                     <textarea id="oba" name="oba"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="datetime">What date and time suits you best for a meeting?</label>
+                    <textarea id="datetime" name="datetime"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="topic">Topic of Interest *</label>
@@ -461,6 +470,7 @@
                 phone: formData.get('phone'),
                 email: formData.get('email'),
                 oba: formData.get('oba'),
+                datetime: formData.get('datetime'),
                 topic: formData.get('topic'),
                 timestamp: new Date().toISOString()
             };
@@ -496,4 +506,3 @@
     </script>
 </body>
 </html>
-
